@@ -32,3 +32,5 @@ const moduleName = require('_module_name');
 2. second Method : use a ES6 import method , introduced by ECMAScript in 2017
 <br> 
 <code>import moduleName from '_module_name';</code>
+
+
