@@ -50,10 +50,36 @@ The fs.open() method takes a "flag" as the second argument, if the flag is "w" f
 ```
 <br> 
 <code>
-var fs = require('fs');
+const fs = require('fs');
 
-fs.open('mynewfile2.txt', 'w', function (err, file) {
+fs.open('mynewfile2.txt', 'w', function (err, fileDescriptor) {
   if (err) throw err;
   console.log('Saved!');
+  return;
+  // now  we can perform other action like readFile, writeFile() on the fileDescriptor. 
+  fs.close(fileDescriptor,(err) {
+  if(err) 
+  {
+    console.error("error in closing the file");
+    return;
+  }
+  })
 });
 </code>
+
+# writeFile(); 
+
+```
+The fs.writeFile() method in Node.js is used to asynchronously write data to a file. It has the following 
+
+syntax:
+fs.writeFile(file, data, [options], callback);
+
+file (string): The name of the file to be written.
+
+data (string or buffer): The data to be written to the file.
+
+options (object, optional): An object that can include options like encoding or mode.
+
+callback (function): A callback function that will be called after the file is written. The callback takes an error as its only parameter.
+```
