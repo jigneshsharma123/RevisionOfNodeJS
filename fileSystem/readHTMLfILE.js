@@ -1,13 +1,24 @@
-const http = require('http');
-const fs = require('fs');
+const fs = require('node:fs');
+const port = 8080;
+const http = require('node:http');
 
-http.createServer((req,res)=> {
-   fs.readFile('./demo.html', ((err,data) => {
-    res.writeHead(200, {'Content-Type' : 'text/html'});
+const instanceOfServer = http.createServer((req,res) => {
+    const path = './demo.html';
+    fs.readFile(path, (err, data) => {
+        if(err) {
+            res.writeHead(404, {'Content-Type' : 'text/html'});
+            res.write('404 page not Found!');
+            return;
+        }
+        res.writeHead(200, {'Content-Type' : 'text/html'});
+        res.write(data);
+        res.end();
+    });
+});
+instanceOfServer.listen(port, (err) => {
     if(err) {
-        console.log("error in reading the file");
+        console.error('error in running the server on : ',port);
+        return;
     }
-    res.write(data);
-    res.end();
-   }));
-}).listen(8080);
+    console.log("server is running on the port:",port);
+})
