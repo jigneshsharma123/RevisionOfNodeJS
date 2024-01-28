@@ -83,3 +83,31 @@ options (object, optional): An object that can include options like encoding or 
 
 callback (function): A callback function that will be called after the file is written. The callback takes an error as its only parameter.
 ```
+# Delete files
+```
+To delete a file with the File System module,  use the fs.unlink() method.
+
+The fs.unlink() method deletes the specified file:
+
+
+fs.unlink(path, callback);
+
+
+```
+
+# Rename File
+
+```
+To rename a file with the File System module,  use the fs.rename() method.
+
+The fs.rename() method renames the specified file:
+
+syntax : 
+fs.rename(oldPath, newPath, callback);
+
+oldPath (string): The current path (including the filename) of the file you want to rename.
+
+newPath (string): The new path (including the new filename) of the file after renaming.
+
+callback (function): A callback function that will be called after the file is renamed. The callback takes an error as its only parameter.
+```
